@@ -1,10 +1,13 @@
 import React, { Suspense, useState } from "react";
-import { Link, Navigate, useNavigate } from "react-router";
+import { Link, Navigate, useLocation, useNavigate } from "react-router";
 import UserDetails2 from "../UserDetails2/UserDetails2";
 
 const SingleUsers = ({ user }) => {
   const [showInfo, setShowInfo] = useState(false);
   const[takeHome,setTakeHome] = useState(false);
+
+const location = useLocation();
+console.log(location)
 
   const navigate = useNavigate();
   const handleNavigate = () => {
