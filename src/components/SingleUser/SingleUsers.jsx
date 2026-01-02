@@ -1,7 +1,11 @@
 import React from 'react';
-import { Link } from 'react-router';
+import { Link, useNavigate } from 'react-router';
 
 const SingleUsers = ({user}) => {
+    const navigate = useNavigate();
+    const handleNavigate = () =>{
+        navigate(`/users/${id}`);
+    }
     const {name,email,phone,id} = user;
     const userStyle = {
         border:"2px solid yellow",
@@ -15,6 +19,8 @@ const SingleUsers = ({user}) => {
             <p>Email :{email}</p>
             <p><small>Phone:{phone}</small></p>
             <Link to={`/users/${id}`}>Show Details</Link>
+
+            <button onClick={handleNavigate}>Details of:{id}</button>
         </div>
     );
 };
