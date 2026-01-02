@@ -1,9 +1,10 @@
 import React, { Suspense, useState } from "react";
-import { Link, useNavigate } from "react-router";
+import { Link, Navigate, useNavigate } from "react-router";
 import UserDetails2 from "../UserDetails2/UserDetails2";
 
 const SingleUsers = ({ user }) => {
   const [showInfo, setShowInfo] = useState(false);
+  const[takeHome,setTakeHome] = useState(false);
 
   const navigate = useNavigate();
   const handleNavigate = () => {
@@ -21,6 +22,10 @@ const SingleUsers = ({ user }) => {
     `https://jsonplaceholder.typicode.com/users/${id}`
   ).then((res) => res.json());
 
+
+  if(takeHome){
+return <Navigate to="/"></Navigate>
+  }
   return (
     <div style={userStyle}>
       <h3>{name}</h3>
@@ -41,6 +46,7 @@ const SingleUsers = ({ user }) => {
           </Suspense>
         )}
       </div>
+      <button onClick={()=>setTakeHome(true)}>Visit home</button>
     </div>
   );
 };
